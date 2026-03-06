@@ -35,7 +35,7 @@ export function RestaurantDetail({ restaurant }: RestaurantDetailProps) {
   return (
     <article>
       {/* Hero image */}
-      <div className="relative aspect-video overflow-hidden">
+      <div className="relative aspect-video overflow-hidden md:mt-6 md:rounded-lg">
         {imgError ? (
           <div className="w-full h-full bg-gradient-to-br from-brand-yellow to-brand-orange flex items-center justify-center">
             <ForkKnife size={64} weight="thin" className="text-brand-red" aria-hidden="true" />

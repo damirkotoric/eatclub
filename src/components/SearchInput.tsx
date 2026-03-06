@@ -12,7 +12,7 @@ export function SearchInput({ value, onChange }: SearchInputProps) {
 
   return (
     <div
-      className="px-[var(--space-page-x)] py-1 cursor-text border-b border-border"
+      className="px-[var(--space-page-x)] py-1 cursor-text border-b border-border md:border-b-0 md:pt-4"
       onClick={() => inputRef.current?.focus()}
     >
       <div className="relative -mx-3">
