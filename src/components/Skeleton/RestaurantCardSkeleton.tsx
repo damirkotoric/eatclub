@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export function RestaurantCardSkeleton() {
   return (
-    <div className="rounded-[var(--radius-card)] bg-surface-primary shadow-card overflow-hidden">
+    <div className="rounded-[var(--radius-card)] bg-card shadow-sm overflow-hidden">
       <Skeleton className="aspect-video w-full" />
       <div className="p-[var(--space-card-padding)] space-y-2">
         <Skeleton className="h-5 w-3/4" />

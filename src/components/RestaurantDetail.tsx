@@ -8,6 +8,7 @@ import {
   NavigationArrow,
   BookOpen,
   Heart,
+  ForkKnife,
 } from "@phosphor-icons/react";
 import type { Restaurant } from "@/types";
 import { DealCard } from "./DealCard";
@@ -37,7 +38,7 @@ export function RestaurantDetail({ restaurant }: RestaurantDetailProps) {
       <div className="px-[var(--space-page-x)] py-3">
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-1.5 text-sm text-text-secondary hover:text-text-primary transition-colors"
+          className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
           aria-label="Go back to restaurant list"
         >
           <ArrowLeft size={18} />
@@ -48,7 +49,9 @@ export function RestaurantDetail({ restaurant }: RestaurantDetailProps) {
       {/* Hero image */}
       <div className="relative aspect-video overflow-hidden">
         {imgError ? (
-          <div className="w-full h-full bg-gradient-to-br from-surface-secondary to-surface-tertiary" />
+          <div className="w-full h-full bg-gradient-to-br from-accent to-muted flex items-center justify-center">
+            <ForkKnife size={64} weight="thin" className="text-muted-foreground" aria-hidden="true" />
+          </div>
         ) : (
           <img
             src={restaurant.imageUrl}
@@ -61,12 +64,12 @@ export function RestaurantDetail({ restaurant }: RestaurantDetailProps) {
       </div>
 
       {/* Quick actions bar */}
-      <div className="flex justify-around py-3 border-b border-border-default bg-surface-primary">
+      <div className="flex justify-around py-3 border-b border-border bg-background">
         {quickActions.map(({ icon: Icon, label }) => (
           <button
             key={label}
             type="button"
-            className="flex flex-col items-center gap-1 text-text-secondary hover:text-text-primary transition-colors"
+            className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
             aria-label={label}
           >
             <Icon size={22} />
@@ -78,19 +81,19 @@ export function RestaurantDetail({ restaurant }: RestaurantDetailProps) {
       {/* Restaurant info */}
       <div className="px-[var(--space-page-x)] py-5 space-y-4">
         <div className="space-y-2">
-          <h1 className="text-2xl font-bold text-text-primary">
+          <h1 className="text-2xl font-bold text-foreground">
             {restaurant.name}
           </h1>
-          <p className="text-sm text-text-secondary">
+          <p className="text-sm text-muted-foreground">
             {restaurant.cuisines.join(", ")} · $
           </p>
-          <div className="flex items-center gap-1.5 text-sm text-text-secondary">
+          <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
             <Clock size={16} aria-hidden="true" />
             <span>
               {restaurant.open} - {restaurant.close}
             </span>
           </div>
-          <div className="flex items-center gap-1.5 text-sm text-text-secondary">
+          <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
             <MapPin size={16} weight="fill" aria-hidden="true" />
             <span>
               {restaurant.address}, {restaurant.suburb} · 1.0km Away
@@ -102,7 +105,7 @@ export function RestaurantDetail({ restaurant }: RestaurantDetailProps) {
         <section aria-labelledby="deals-heading">
           <h2
             id="deals-heading"
-            className="text-lg font-semibold text-text-primary mb-3"
+            className="text-lg font-semibold text-foreground mb-3"
           >
             Available Deals
           </h2>

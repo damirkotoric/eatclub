@@ -19,8 +19,8 @@ export function RestaurantDetailPage() {
   if (error) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center space-y-3 px-[var(--space-page-x)]">
-        <WarningCircle size={48} className="text-text-tertiary" />
-        <p className="text-text-secondary text-sm">{error}</p>
+        <WarningCircle size={48} className="text-muted-foreground" />
+        <p className="text-muted-foreground text-sm">{error}</p>
         <Button
           variant="outline"
           size="sm"
@@ -37,8 +37,8 @@ export function RestaurantDetailPage() {
   if (!restaurant) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center space-y-3 px-[var(--space-page-x)]">
-        <WarningCircle size={48} className="text-text-tertiary" />
-        <p className="text-text-secondary text-sm">Restaurant not found</p>
+        <WarningCircle size={48} className="text-muted-foreground" />
+        <p className="text-muted-foreground text-sm">Restaurant not found</p>
         <Button
           variant="outline"
           size="sm"

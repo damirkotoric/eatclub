@@ -18,7 +18,7 @@ export function DealCard({ deal }: DealCardProps) {
         "flex items-start justify-between gap-4 p-4 rounded-[var(--radius-card)] border",
         deal.lightning
           ? "border-brand-yellow bg-brand-yellow-light"
-          : "border-border-default bg-surface-primary",
+          : "border-border bg-background",
       )}
     >
       <div className="flex-1 space-y-1">
@@ -31,22 +31,22 @@ export function DealCard({ deal }: DealCardProps) {
               aria-label="Lightning deal"
             />
           )}
-          <span className="text-lg font-bold text-text-deal">
+          <span className="text-lg font-bold text-destructive">
             {deal.discount}% Off
           </span>
         </div>
-        <p className="text-sm text-text-secondary">
+        <p className="text-sm text-muted-foreground">
           {timeLabel}
           {suffix}
         </p>
-        <p className="text-xs text-text-tertiary">
+        <p className="text-xs text-muted-foreground">
           {deal.qtyLeft} Deals Left
         </p>
       </div>
 
       <Button
         size="sm"
-        className="bg-brand-red hover:bg-brand-red-hover text-text-inverse rounded-[var(--radius-button)] font-semibold shrink-0"
+        className="bg-brand-red hover:bg-brand-red-hover text-destructive-foreground rounded-[var(--radius-button)] font-semibold shrink-0"
       >
         Redeem
       </Button>

@@ -7,7 +7,7 @@ export function RestaurantDetailSkeleton() {
         <Skeleton className="h-5 w-16" />
       </div>
       <Skeleton className="aspect-video w-full" />
-      <div className="flex justify-around py-3 border-b border-border-default">
+      <div className="flex justify-around py-3 border-b border-border">
         {Array.from({ length: 4 }).map((_, i) => (
           <div key={i} className="flex flex-col items-center gap-1">
             <Skeleton className="h-6 w-6 rounded-full" />

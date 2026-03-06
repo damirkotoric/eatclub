@@ -7,7 +7,7 @@ export function Layout() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen bg-surface-secondary">
+    <div className="min-h-screen bg-background">
       <Header />
       <main className="max-w-5xl mx-auto">
         <AnimatePresence mode="wait">

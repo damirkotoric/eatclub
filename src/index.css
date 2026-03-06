@@ -4,10 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* =============================================
-   SEMANTIC DESIGN TOKENS
-   ============================================= */
-
 :root {
   /* Brand */
   --brand-yellow: #ffc107;
@@ -17,29 +13,27 @@
   --brand-red-hover: #dc2626;
   --brand-red-light: #fef2f2;
 
-  /* Surfaces */
-  --surface-primary: #ffffff;
-  --surface-secondary: #f9fafb;
-  --surface-tertiary: #f3f4f6;
-
-  /* Borders */
-  --border-default: #e5e7eb;
-  --border-subtle: #f3f4f6;
-  --border-focus: #ffc107;
-
-  /* Text */
-  --text-primary: #111827;
-  --text-secondary: #6b7280;
-  --text-tertiary: #9ca3af;
-  --text-inverse: #ffffff;
-  --text-brand: #ffc107;
-  --text-deal: #ef4444;
-
-  /* Shadows */
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
-  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.1),
-    0 2px 4px rgba(0, 0, 0, 0.06);
-  --shadow-header: 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* shadcn/ui semantic tokens */
+  --background: #ffffff;
+  --foreground: #111827;
+  --card: #ffffff;
+  --card-foreground: #111827;
+  --popover: #ffffff;
+  --popover-foreground: #111827;
+  --primary: var(--brand-yellow);
+  --primary-foreground: #111827;
+  --secondary: #f9fafb;
+  --secondary-foreground: #111827;
+  --destructive: var(--brand-red);
+  --destructive-foreground: #ffffff;
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+  --accent: var(--brand-yellow-light);
+  --accent-foreground: #111827;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: var(--brand-yellow);
+  --radius: 0.625rem;
 
   /* Radii */
   --radius-card: 12px;
@@ -60,35 +54,10 @@
   /* Transitions */
   --transition-fast: 150ms ease;
   --transition-normal: 200ms ease;
-
-  /* shadcn/ui — override defaults with brand tokens */
-  --background: var(--surface-primary);
-  --foreground: var(--text-primary);
-  --card: var(--surface-primary);
-  --card-foreground: var(--text-primary);
-  --popover: var(--surface-primary);
-  --popover-foreground: var(--text-primary);
-  --primary: var(--brand-yellow);
-  --primary-foreground: var(--text-primary);
-  --secondary: var(--surface-secondary);
-  --secondary-foreground: var(--text-primary);
-  --destructive: var(--brand-red);
-  --destructive-foreground: var(--text-inverse);
-  --muted: var(--surface-tertiary);
-  --muted-foreground: var(--text-secondary);
-  --accent: var(--brand-yellow-light);
-  --accent-foreground: var(--text-primary);
-  --border: var(--border-default);
-  --input: var(--border-default);
-  --ring: var(--brand-yellow);
-  --radius: 0.625rem;
 }
 
-/* =============================================
-   TAILWIND @theme BRIDGE
-   ============================================= */
-
 @theme inline {
+  /* Brand colours */
   --color-brand-yellow: var(--brand-yellow);
   --color-brand-yellow-hover: var(--brand-yellow-hover);
   --color-brand-yellow-light: var(--brand-yellow-light);
@@ -96,26 +65,7 @@
   --color-brand-red-hover: var(--brand-red-hover);
   --color-brand-red-light: var(--brand-red-light);
 
-  --color-surface-primary: var(--surface-primary);
-  --color-surface-secondary: var(--surface-secondary);
-  --color-surface-tertiary: var(--surface-tertiary);
-
-  --color-border-default: var(--border-default);
-  --color-border-subtle: var(--border-subtle);
-  --color-border-focus: var(--border-focus);
-
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-text-tertiary: var(--text-tertiary);
-  --color-text-inverse: var(--text-inverse);
-  --color-text-brand: var(--text-brand);
-  --color-text-deal: var(--text-deal);
-
   --font-sans: var(--font-sans);
-
-  --shadow-card: var(--shadow-card);
-  --shadow-card-hover: var(--shadow-card-hover);
-  --shadow-header: var(--shadow-header);
 
   --radius-card: var(--radius-card);
   --radius-badge: var(--radius-badge);
@@ -148,10 +98,6 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
-
-/* =============================================
-   BASE LAYER
-   ============================================= */
 
 @layer base {
   * {

@@ -6,7 +6,9 @@ import type {
   Restaurant,
 } from "@/types";
 
-const API_URL = "https://eccdn.com.au/misc/challengedata.json";
+const API_URL = import.meta.env.DEV
+  ? "/api/misc/challengedata.json"
+  : "https://eccdn.com.au/misc/challengedata.json";
 
 function parseBool(value: string): boolean {
   return value.toLowerCase() === "true";

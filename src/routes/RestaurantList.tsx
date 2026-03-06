@@ -18,21 +18,12 @@ export function RestaurantList() {
 
   return (
     <div className="px-[var(--space-page-x)] py-5 space-y-5">
-      <div>
-        <h1 className="text-xl font-bold text-text-primary">
-          Discover Deals
-        </h1>
-        <p className="text-sm text-text-secondary mt-0.5">
-          Save on your favourite restaurants
-        </p>
-      </div>
-
       <SearchInput value={search} onChange={setSearch} />
 
       {error && (
         <div className="flex flex-col items-center justify-center py-12 text-center space-y-3">
-          <WarningCircle size={48} className="text-text-tertiary" />
-          <p className="text-text-secondary text-sm">{error}</p>
+          <WarningCircle size={48} className="text-muted-foreground" />
+          <p className="text-muted-foreground text-sm">{error}</p>
           <Button
             variant="outline"
             size="sm"
@@ -57,7 +48,7 @@ export function RestaurantList() {
         <>
           {displayed.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-12 text-center">
-              <p className="text-text-secondary text-sm">
+              <p className="text-muted-foreground text-sm">
                 No restaurants match &ldquo;{search}&rdquo;
               </p>
             </div>

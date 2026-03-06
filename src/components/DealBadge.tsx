@@ -14,7 +14,7 @@ export function DealBadge({ deal, size = "md" }: DealBadgeProps) {
   return (
     <div
       className={cn(
-        "inline-flex flex-col items-start bg-brand-red text-text-inverse leading-tight",
+        "inline-flex flex-col items-start bg-brand-red text-destructive-foreground leading-tight",
         size === "sm"
           ? "px-2 py-1 rounded-[var(--radius-badge)]"
           : "px-2.5 py-1.5 rounded-[var(--radius-badge)]",
