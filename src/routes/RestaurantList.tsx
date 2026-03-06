@@ -1,6 +1,7 @@
-import { useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useRestaurants } from "@/lib/useRestaurants";
-import { sortByBestDiscount } from "@/lib/utils";
+import { sortByBestDiscount, filterRestaurants } from "@/lib/utils";
+import { SearchInput } from "@/components/SearchInput";
 import { RestaurantCard } from "@/components/RestaurantCard";
 import { RestaurantCardSkeleton } from "@/components/Skeleton/RestaurantCardSkeleton";
 import { WarningCircle, ArrowClockwise } from "@phosphor-icons/react";
@@ -8,11 +9,12 @@ import { Button } from "@/components/ui/button";
 
 export function RestaurantList() {
   const { restaurants, isLoading, error, retry } = useRestaurants();
+  const [search, setSearch] = useState("");
 
-  const displayed = useMemo(
-    () => sortByBestDiscount(restaurants),
-    [restaurants],
-  );
+  const displayed = useMemo(() => {
+    const filtered = filterRestaurants(restaurants, search);
+    return sortByBestDiscount(filtered);
+  }, [restaurants, search]);
 
   return (
     <div className="px-[var(--space-page-x)] py-5 space-y-5">
@@ -24,6 +26,8 @@ export function RestaurantList() {
           Save on your favourite restaurants
         </p>
       </div>
+
+      <SearchInput value={search} onChange={setSearch} />
 
       {error && (
         <div className="flex flex-col items-center justify-center py-12 text-center space-y-3">
@@ -50,11 +54,24 @@ export function RestaurantList() {
       )}
 
       {!isLoading && !error && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--space-card-gap)]">
-          {displayed.map((restaurant) => (
-            <RestaurantCard key={restaurant.id} restaurant={restaurant} />
-          ))}
-        </div>
+        <>
+          {displayed.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-12 text-center">
+              <p className="text-text-secondary text-sm">
+                No restaurants match &ldquo;{search}&rdquo;
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--space-card-gap)]">
+              {displayed.map((restaurant) => (
+                <RestaurantCard
+                  key={restaurant.id}
+                  restaurant={restaurant}
+                />
+              ))}
+            </div>
+          )}
+        </>
       )}
     </div>
   );
