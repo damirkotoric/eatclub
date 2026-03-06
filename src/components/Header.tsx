@@ -21,7 +21,7 @@ export function Header() {
         <button
           type="button"
           aria-label="Account"
-          className="p-2 rounded-full hover:bg-secondary transition-colors"
+          className="-ml-2 p-2 rounded-full hover:bg-secondary transition-colors"
         >
           <User size={24} className="text-foreground" />
         </button>
@@ -29,7 +29,7 @@ export function Header() {
         <button
           type="button"
           aria-label="Filters"
-          className="p-2 rounded-full hover:bg-secondary transition-colors"
+          className="-mr-2 p-2 rounded-full hover:bg-secondary transition-colors"
         >
           <FadersHorizontal size={24} className="text-foreground" />
         </button>

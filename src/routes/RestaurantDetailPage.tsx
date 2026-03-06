@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useRestaurants } from "@/lib/useRestaurants";
 import { RestaurantDetail } from "@/components/RestaurantDetail";
@@ -6,6 +7,9 @@ import { WarningCircle, ArrowClockwise } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 
 export function RestaurantDetailPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { id } = useParams<{ id: string }>();
   const { restaurants, isLoading, error, retry } = useRestaurants();
   const navigate = useNavigate();

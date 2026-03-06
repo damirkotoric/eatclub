@@ -5,16 +5,17 @@ import { cn } from "@/lib/utils";
 interface DealBadgeProps {
   deal: Deal;
   size?: "sm" | "md";
+  hours?: string;
 }
 
-export function DealBadge({ deal, size = "md" }: DealBadgeProps) {
+export function DealBadge({ deal, size = "md", hours }: DealBadgeProps) {
   const timeLabel = getDealBadgeTimeLabel(deal);
   const suffix = deal.dineIn ? " - Dine In" : "";
 
   return (
     <div
       className={cn(
-        "inline-flex flex-col items-start bg-brand-red text-destructive-foreground leading-tight",
+        "inline-flex flex-col items-start bg-brand-red/50 backdrop-blur-sm text-destructive-foreground leading-tight",
         size === "sm"
           ? "px-2 py-1 rounded-[var(--radius-badge)]"
           : "px-2.5 py-1.5 rounded-[var(--radius-badge)]",
@@ -28,11 +29,12 @@ export function DealBadge({ deal, size = "md" }: DealBadgeProps) {
       <span
         className={cn(
           size === "sm" ? "text-[10px]" : "text-xs",
-          "opacity-90",
+          "opacity-90 my-0.5",
         )}
       >
         {timeLabel}
         {suffix}
+        {hours && ` · ${hours}`}
       </span>
     </div>
   );

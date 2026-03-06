@@ -17,8 +17,10 @@ export function RestaurantList() {
   }, [restaurants, search]);
 
   return (
-    <div className="px-[var(--space-page-x)] py-5 space-y-5">
+    <div>
       <SearchInput value={search} onChange={setSearch} />
+
+      <div className="px-[var(--space-page-x)] py-5 space-y-5">
 
       {error && (
         <div className="flex flex-col items-center justify-center py-12 text-center space-y-3">
@@ -37,7 +39,7 @@ export function RestaurantList() {
       )}
 
       {isLoading && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--space-card-gap)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-start gap-[var(--space-card-gap)]">
           {Array.from({ length: 6 }).map((_, i) => (
             <RestaurantCardSkeleton key={i} />
           ))}
@@ -53,7 +55,7 @@ export function RestaurantList() {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--space-card-gap)]">
+            <div className="grid grid-cols-1 md:grid-cols-2 items-start gap-[var(--space-card-gap)]">
               {displayed.map((restaurant) => (
                 <RestaurantCard
                   key={restaurant.id}
@@ -64,6 +66,7 @@ export function RestaurantList() {
           )}
         </>
       )}
+      </div>
     </div>
   );
 }

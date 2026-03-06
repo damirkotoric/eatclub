@@ -34,23 +34,11 @@ export function RestaurantDetail({ restaurant }: RestaurantDetailProps) {
 
   return (
     <article>
-      {/* Back button */}
-      <div className="px-[var(--space-page-x)] py-3">
-        <button
-          onClick={() => navigate(-1)}
-          className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-          aria-label="Go back to restaurant list"
-        >
-          <ArrowLeft size={18} />
-          <span>Back</span>
-        </button>
-      </div>
-
       {/* Hero image */}
       <div className="relative aspect-video overflow-hidden">
         {imgError ? (
-          <div className="w-full h-full bg-gradient-to-br from-accent to-muted flex items-center justify-center">
-            <ForkKnife size={64} weight="thin" className="text-muted-foreground" aria-hidden="true" />
+          <div className="w-full h-full bg-gradient-to-br from-brand-yellow to-brand-orange flex items-center justify-center">
+            <ForkKnife size={64} weight="thin" className="text-brand-red" aria-hidden="true" />
           </div>
         ) : (
           <img
@@ -60,7 +48,7 @@ export function RestaurantDetail({ restaurant }: RestaurantDetailProps) {
             onError={() => setImgError(true)}
           />
         )}
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/30 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/20 to-transparent" />
       </div>
 
       {/* Quick actions bar */}
@@ -79,9 +67,9 @@ export function RestaurantDetail({ restaurant }: RestaurantDetailProps) {
       </div>
 
       {/* Restaurant info */}
-      <div className="px-[var(--space-page-x)] py-5 space-y-4">
+      <div className="px-[var(--space-page-x)] py-5 space-y-8">
         <div className="space-y-2">
-          <h1 className="text-2xl font-bold text-foreground">
+          <h1 className="text-2xl font-heading font-bold text-foreground">
             {restaurant.name}
           </h1>
           <p className="text-sm text-muted-foreground">
@@ -105,11 +93,11 @@ export function RestaurantDetail({ restaurant }: RestaurantDetailProps) {
         <section aria-labelledby="deals-heading">
           <h2
             id="deals-heading"
-            className="text-lg font-semibold text-foreground mb-3"
+            className="text-lg font-heading font-semibold text-foreground"
           >
             Available Deals
           </h2>
-          <div className="space-y-3">
+          <div>
             {sortedDeals.map((deal) => (
               <DealCard key={deal.id} deal={deal} />
             ))}

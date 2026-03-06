@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Clock, Heart, ForkKnife } from "@phosphor-icons/react";
+import { Heart, ForkKnife } from "@phosphor-icons/react";
 import type { Restaurant } from "@/types";
 import { DealBadge } from "./DealBadge";
 
@@ -11,25 +11,18 @@ interface RestaurantCardProps {
 export function RestaurantCard({ restaurant }: RestaurantCardProps) {
   const [imgError, setImgError] = useState(false);
   const { bestDeal } = restaurant;
-  const hasDineIn = restaurant.deals.some((d) => d.dineIn);
-
-  const serviceTypes = [
-    ...(hasDineIn ? ["Dine In"] : []),
-    "Takeaway",
-    "Order Online",
-  ];
 
   return (
     <Link
       to={`/restaurant/${restaurant.id}`}
-      className="group block rounded-[var(--radius-card)] bg-card shadow-sm hover:shadow-md transition-shadow overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
       aria-label={`${restaurant.name} — ${bestDeal.discount}% off`}
     >
       {/* Hero image */}
-      <div className="relative aspect-video overflow-hidden">
+      <div className="relative aspect-video overflow-hidden rounded-[var(--radius-card)] shadow-md group-hover:shadow-md transition-shadow duration-300">
         {imgError ? (
-          <div className="w-full h-full bg-gradient-to-br from-accent to-muted flex items-center justify-center">
-            <ForkKnife size={48} weight="thin" className="text-muted-foreground" aria-hidden="true" />
+          <div className="w-full h-full bg-gradient-to-br from-brand-yellow to-brand-orange flex items-center justify-center">
+            <ForkKnife size={48} weight="thin" className="text-brand-red" aria-hidden="true" />
           </div>
         ) : (
           <img
@@ -42,42 +35,33 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
         )}
         {/* Badge overlay */}
         <div className="absolute bottom-2 left-2">
-          <DealBadge deal={bestDeal} size="sm" />
+          <DealBadge deal={bestDeal} size="sm" hours={`${restaurant.open} - ${restaurant.close}`} />
         </div>
-        {/* Favourite icon */}
-        <button
-          type="button"
-          aria-label="Add to favourites"
-          className="absolute top-2 right-2 p-1.5 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background transition-colors"
-          onClick={(e) => e.preventDefault()}
-        >
-          <Heart size={18} className="text-muted-foreground" />
-        </button>
       </div>
 
       {/* Card body */}
-      <div className="p-[var(--space-card-padding)] space-y-1">
-        <h2 className="font-semibold text-foreground text-base leading-snug">
-          {restaurant.name}
-        </h2>
-        <div className="flex items-center gap-1 text-muted-foreground text-xs">
-          <MapPin size={14} weight="fill" aria-hidden="true" />
-          <span>
-            0.5km Away, {restaurant.suburb}
-          </span>
+      <div className="py-[var(--space-card-padding)] space-y-0">
+        <div className="flex items-start gap-1">
+          <div className="flex-1 min-w-0 space-y-1 pt-0.5">
+            <h2 className="flex-1 font-heading font-semibold text-foreground text-base leading-snug">
+              {restaurant.name}
+            </h2>
+            <p className="text-muted-foreground text-xs truncate">
+              0.5km • {restaurant.cuisines.join(", ")}
+            </p>
+            <p className="text-muted-foreground text-xs">
+              Dine In · Takeaway · Order Online
+            </p>
+          </div>
+          <button
+            type="button"
+            aria-label="Add to favourites"
+            className="-mt-0.5 p-1 rounded-full hover:bg-accent transition-colors cursor-pointer"
+            onClick={(e) => e.preventDefault()}
+          >
+            <Heart size={20} className="text-muted-foreground" />
+          </button>
         </div>
-        <p className="text-muted-foreground text-sm truncate">
-          {restaurant.cuisines.join(", ")}
-        </p>
-        <div className="flex items-center gap-1 text-muted-foreground text-xs">
-          <Clock size={14} aria-hidden="true" />
-          <span>
-            {restaurant.open} - {restaurant.close}
-          </span>
-        </div>
-        <p className="text-muted-foreground text-xs">
-          {serviceTypes.join(" · ")}
-        </p>
       </div>
     </Link>
   );
