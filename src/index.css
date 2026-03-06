@@ -4,6 +4,21 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: generalGrotesque;
+  src: url("https://eatclub.com.au/_next/static/media/1582e4e3ed413d8d-s.p.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "generalGrotesque Fallback";
+  src: local("Arial");
+  ascent-override: 104.86%;
+  descent-override: 19.58%;
+  line-gap-override: 0.00%;
+  size-adjust: 102.13%;
+}
+
 :root {
   /* Brand */
   --brand-yellow: #f8d54b;
